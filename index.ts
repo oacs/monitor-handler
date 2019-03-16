@@ -5,8 +5,13 @@ import { AddressInfo } from "net";
 import { IResponse } from "./src/entity/IResponse";
 import onHeaders from 'on-headers';
 import onFinished = require("on-finished");
+import { connectDB } from "./src/connection";
 
-export function monitor(req: Request, res: Response, next: NextFunction) {
+export function monitor(options?: any) {
+    connectDB(options.db ? options.db : null);
+    return monitorFunction;
+}
+function monitorFunction(req: Request, res: Response, next: NextFunction) {
     let start = new Date;
     const reqAny: any = req;
     const resAny: any = res;
@@ -72,6 +77,7 @@ export function monitor(req: Request, res: Response, next: NextFunction) {
             statusCode: res.statusCode ? res.statusCode : 0,
             statusMessage: res.statusMessage ? res.statusMessage : '',
         }
+
         const requestC = new RequestC(
             // {
             // duration, typeOfRequest, statusOfRequest, message
@@ -79,10 +85,16 @@ export function monitor(req: Request, res: Response, next: NextFunction) {
             {
                 req: newRequest,
                 res: newResponse,
-                duration: duration
+                duration: duration,
+                createdAt: new Date().toISOString()
             }
         );
-        requestC.save();
+        // console.log(requestC.db)
+        requestC.save({}, (err, product) => {
+            // console.log(err, product);
+        });
+        console.log(req.headers['x-forwarded-for'] || req.connection.remoteAddress);
+        console.log('save');
     })
     // res.on('finish', function () {
     //     // const duration: number = Math.abs(new Date().getTime() - start.getTime());

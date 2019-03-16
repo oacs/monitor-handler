@@ -1,51 +1,5 @@
-import { connect, Schema, model } from 'mongoose';
-import { Request, Response } from 'express';
-import { IncomingHttpHeaders } from 'http';
-
-const urlMongo = process.env.url || 'localhost';
-const portMongo = process.env.port || 27017;
-const dbMongo = process.env.db || 'local';
-
-const uri: string = `mongodb://${urlMongo}:${portMongo}/${dbMongo}`;
-
-connect(uri, (err: any) => {
-    if (err) {
-        console.log(err.message);
-    } else {
-        console.log("Succesfully Connected!")
-    }
-});
-
-// const req: Request = {} as Request;
-// req.baseUrl;
-// req.body;
-// req.connection.remotePort
-// req.connection.remoteFamily
-// req.connection.remoteAddress
-// req.connection.localPort
-// req.connection.localAddress
-// req.connection.address
-// req.cookies
-// req.eventNames
-// req.headers
-// req.hostname
-// req.httpVersion
-// req.ip
-// req.ips
-// req.method
-// req.originalUrl
-// req.params
-// req.path
-// req.protocol
-// req.query
-// req.secure
-// req.statusCode
-// req.statusMessage
-// req.subdomains
-// req.trailers
-// req.url
-// req.xhr
-const r: Response = {} as Response;
+import { Schema, model } from 'mongoose';
+import { Request } from 'express';
 
 export const RequestSchema = new Schema({
     req: {
@@ -125,7 +79,8 @@ export const RequestSchema = new Schema({
             upgrading: { type: Boolean, required: false },
         }
     },
-    duration: { type: Number }
+    duration: { type: Number },
+    createdAt: { type: Date }
 
 });
 
