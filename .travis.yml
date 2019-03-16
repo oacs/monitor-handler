@@ -24,6 +24,6 @@ deploy:
   email: "EMAIL_ADDRESS"
   api_key: "NPM_TOKEN"
   on:
-    branch: production
+    branch: master
   skip_cleanup: true
   tag: next
