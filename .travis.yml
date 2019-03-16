@@ -18,3 +18,12 @@ install:
 script:
 - npm run build
 - npm test
+
+deploy:
+  provider: npm
+  email: "EMAIL-ADDRESS"
+  api_key: "NPM-TOKEN"
+  on:
+    branch: production
+  skip_cleanup: true
+  tag: next

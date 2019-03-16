@@ -1,4 +1,7 @@
 # Monitor-Handler
+
+[![Build Status](https://travis-ci.org/oacs/monitor-handler.svg?branch=master)](https://travis-ci.org/oacs/monitor-handler)
+
 It's an middleware that can take the time of a request on Express and save it in a mongo database with another information about the success or error on the request
 ## Installation
 
