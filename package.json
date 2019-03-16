@@ -6,7 +6,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -r dist && tsc --declaration",
-    "watch": "rm -r dist && tsc --declaration --watch"
+    "watch": "rm -r dist && tsc --declaration --watch",
+    "test": ""
   },
   "repository": {
     "type": "git",

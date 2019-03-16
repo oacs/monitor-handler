@@ -1,5 +1,20 @@
-language : node_js
-node_js :
- - stable
+sudo: false
+language: node_js
+node_js:
+- '8'
+services:
+  - docker
+branches:
+  only:
+  - master
+cache:
+  directories:
+  - node_modules
+before_install:
+- docker-compose up -d
+ 
 install:
- - npm install
+- npm install
+script:
+- npm run build
+- npm test
