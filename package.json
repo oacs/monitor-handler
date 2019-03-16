@@ -25,6 +25,9 @@
     "url": "https://github.com/oacs/monitor-handler/issues"
   },
   "homepage": "https://github.com/oacs/monitor-handler#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
