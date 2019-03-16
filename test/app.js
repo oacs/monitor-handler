@@ -16,12 +16,14 @@ async function app() {
     }));
 
     const monitor = await handler.monitor({
-        url: 'localhost',
-        port: 27017,
-        db: 'local',
+        db: {
+            url: 'localhost',
+            port: 27017,
+            db: 'admin',
 
-        user: 'root',
-        password: 'example'
+            user: 'root',
+            password: 'example'
+        }
     });
     app.use(monitor);
 

@@ -1,6 +1,6 @@
 {
   "name": "monitor-handler",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "It's an middleware that can take the time of a request on Express and save it in a mongo database with another information about the success or error on the request",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
